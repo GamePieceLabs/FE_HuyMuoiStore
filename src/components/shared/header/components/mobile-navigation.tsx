@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { ChevronRight, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -38,37 +38,93 @@ export function MobileNavigation() {
         <Menu aria-hidden="true" className="size-5" strokeWidth={1.75} />
       </SheetTrigger>
 
-      <SheetContent className="w-[min(86vw,22rem)] p-0" side="left">
-        <SheetHeader className="border-b border-border px-6 py-5 pr-14">
+      <SheetContent className="w-[min(72vw,18rem)] p-0" side="left">
+        <SheetHeader className="border-b border-border bg-muted/30 px-5 py-5 pr-14">
           <div className="flex items-center justify-between gap-4">
-            <SheetTitle>Huy Mười Store</SheetTitle>
+            <div className="min-w-0">
+              <SheetTitle className="truncate text-lg font-semibold tracking-tight">
+                Huy Mười Store
+              </SheetTitle>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Khám phá phong cách của bạn
+              </p>
+            </div>
             <LanguageSelector />
           </div>
           <SheetDescription className="sr-only">
             Điều hướng chính của cửa hàng
           </SheetDescription>
         </SheetHeader>
-        <div className="px-4 py-4">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 py-5">
           <nav aria-label="Điều hướng chính">
+            <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              Khám phá
+            </p>
             <ul className="flex flex-col gap-1">
-              {navigationItems.map(({ label, href }) => {
-                const isActive = isNavigationItemActive(pathname, href);
+              {navigationItems
+                .filter(({ mobileOnly }) => !mobileOnly)
+                .map(({ label, href }) => {
+                  const isActive = isNavigationItemActive(pathname, href);
 
-                return (
-                  <li key={href}>
-                  <Link
-                    aria-current={isActive ? "page" : undefined}
-                    className={cn(
-                      "flex min-h-12 items-center rounded-md px-3 text-base font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                      isActive && "bg-muted font-semibold",
-                    )}
-                    href={href}
-                  >
-                    {label}
-                  </Link>
-                  </li>
-                );
-              })}
+                  return (
+                    <li key={href}>
+                      <Link
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                          isActive &&
+                            "bg-foreground text-background hover:bg-foreground/90",
+                        )}
+                        href={href}
+                      >
+                        <span>{label}</span>
+                        <ChevronRight
+                          aria-hidden="true"
+                          className={cn(
+                            "size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5",
+                            isActive && "text-background/70",
+                          )}
+                          strokeWidth={1.75}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
+            </ul>
+
+            <p className="mb-2 mt-8 px-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              Thông tin
+            </p>
+            <ul className="flex flex-col gap-1">
+              {navigationItems
+                .filter(({ mobileOnly }) => mobileOnly)
+                .map(({ label, href }) => {
+                  const isActive = isNavigationItemActive(pathname, href);
+
+                  return (
+                    <li key={href}>
+                      <Link
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                          isActive &&
+                            "bg-foreground text-background hover:bg-foreground/90",
+                        )}
+                        href={href}
+                      >
+                        <span>{label}</span>
+                        <ChevronRight
+                          aria-hidden="true"
+                          className={cn(
+                            "size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5",
+                            isActive && "text-background/70",
+                          )}
+                          strokeWidth={1.75}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
             </ul>
           </nav>
         </div>
