@@ -6,6 +6,7 @@ import { Header } from "@/components/shared/header";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
+import { Wrapper } from "@/components/shared/wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +36,48 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <TooltipProvider>
           <Header />
           <main className="flex flex-1 flex-col">{children}</main>
-          <Footer />
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <main className="flex flex-1 flex-col">{children}</main>
+          <Wrapper>
+            <Footer />
+          </Wrapper>
         </TooltipProvider>
       </body>
     </html>
