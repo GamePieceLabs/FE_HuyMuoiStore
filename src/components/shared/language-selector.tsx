@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Languages } from "lucide-react";
+import { Languages } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,14 +18,12 @@ export function LanguageSelector() {
         render={
           <Button
             aria-label="Chọn ngôn ngữ"
-            className="h-9 gap-2 px-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+            className="size-11 p-0 text-muted-foreground hover:bg-muted hover:text-foreground"
             variant="ghost"
           />
         }
       >
-        <Languages aria-hidden="true" className="size-4" strokeWidth={1.75} />
-        <span>VI</span>
-        <ChevronDown aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
+        <Languages aria-hidden="true" className="size-5" strokeWidth={2} />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-36">
         <DropdownMenuRadioGroup defaultValue="vi">

@@ -1,9 +1,4 @@
-import {
-  Heart,
-  Search,
-  ShoppingBag,
-  UserRound,
-} from "lucide-react";
+import { Heart, Search, ShoppingBag, UserRound } from "lucide-react";
 
 import { LanguageSelector } from "@/components/shared/language-selector";
 
@@ -18,7 +13,7 @@ export function HeaderUtilities() {
   return (
     <ul
       aria-label="Tiện ích"
-      className="ml-auto flex items-center justify-end gap-2 sm:gap-3 xl:ml-0 xl:basis-3/20 xl:shrink-0 xl:grow-0 xl:gap-4 2xl:gap-5"
+      className="flex items-center justify-end xl:basis-3/20 xl:shrink-0"
     >
       {utilityItems.map(({ label, icon: Icon }) => (
         <li
