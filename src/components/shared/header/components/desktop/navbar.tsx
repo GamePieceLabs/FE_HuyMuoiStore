@@ -1,14 +1,7 @@
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-
-const navigationItems = [
-  { label: "Trang chủ", href: "/", isActive: true },
-  { label: "Sản phẩm", href: "/products" },
-  { label: "Chi tiết", href: "/product/slug-id" },
-  { label: "Blog", href: "/blogs" },
-  { label: "Giới thiệu", href: "/about-us" },
-];
+import { navigationItems } from "../../data/navigation-items";
 
 export function Navbar() {
   return (
