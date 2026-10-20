@@ -13,7 +13,7 @@ export function HeaderUtilities() {
   return (
     <ul
       aria-label="Tiện ích"
-      className="flex items-center justify-end xl:basis-3/20 xl:shrink-0"
+      className="ml-auto flex items-center justify-end xl:basis-3/20 xl:shrink-0"
     >
       {utilityItems.map(({ label, icon: Icon }) => (
         <li

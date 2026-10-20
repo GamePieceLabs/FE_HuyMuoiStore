@@ -41,7 +41,7 @@ export function Navbar() {
   return (
     <nav
       aria-label="Điều hướng chính"
-      className="hidden w-full xl:block xl:basis-7/10 xl:shrink-0 xl:grow-0"
+      className="hidden w-full md:block md:flex-1 xl:basis-7/10 xl:shrink-0 xl:grow-0"
     >
       <ul
         ref={listRef}
