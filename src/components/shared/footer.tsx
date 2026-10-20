@@ -5,20 +5,15 @@ import {
   YoutubeOutlined,
 } from "@lineiconshq/free-icons";
 import { Lineicons } from "@lineiconshq/react-lineicons";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { FooterAbout } from "./footer/footer-about";
+import { FooterMobileAccordion } from "./footer/footer-mobile-accordion";
 import { FooterLinks } from "./footer/footer-links";
 import { FooterLinksSecondary } from "./footer/footer-links-secondary";
 import { FooterNewsletter } from "./footer/footer-newsletter";
 
 export function Footer() {
   return (
-    <footer className="grid min-h-[500px] grid-rows-[1fr_auto]">
+    <footer className="grid max-h-screen sm:min-h-[500px] grid-rows-[1fr_auto]">
       <div className="hidden grid-cols-12 gap-8 md:grid">
         <div className="col-span-5">
           <FooterNewsletter />
@@ -34,43 +29,10 @@ export function Footer() {
         </div>
       </div>
 
-      <Accordion multiple className="md:hidden">
-        <AccordionItem value="newsletter">
-          <AccordionTrigger className="text-lg leading-7 font-semibold tracking-tight">
-            Đăng ký nhận bản tin
-          </AccordionTrigger>
-          <AccordionContent>
-            <FooterNewsletter compact />
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="links">
-          <AccordionTrigger className="text-lg leading-7 font-semibold tracking-tight">
-            Liên kết
-          </AccordionTrigger>
-          <AccordionContent>
-            <FooterLinks compact />
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="links-secondary">
-          <AccordionTrigger className="text-lg leading-7 font-semibold tracking-tight">
-            Liên kết 2
-          </AccordionTrigger>
-          <AccordionContent>
-            <FooterLinksSecondary compact />
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="about">
-          <AccordionTrigger className="text-lg leading-7 font-semibold tracking-tight">
-            Giới thiệu
-          </AccordionTrigger>
-          <AccordionContent>
-            <FooterAbout compact />
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <FooterMobileAccordion />
 
-      <div className="flex flex-col gap-4 border-t pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <p>Copyright © 2026 Huy Muoi. Powered by NextJS</p>
+      <div className="flex flex-col items-center gap-4 border-t pt-6 text-sm text-muted-foreground sm:flex-row sm:justify-between">
+        <p className="text-center sm:text-left">Copyright © 2026 Huy Muoi. Powered by NextJS</p>
         <div className="flex items-center gap-4" aria-label="Mạng xã hội">
           <Lineicons icon={FacebookOutlined} size={20} aria-label="Facebook" />
           <Lineicons

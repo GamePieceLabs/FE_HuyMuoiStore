@@ -23,7 +23,7 @@ export function FooterAbout({ compact = false }: { compact?: boolean }) {
       </p>
       <a
         href="mailto:hello@hmstore.vn"
-        className="mt-5 inline-flex items-center gap-2 text-base leading-7 font-medium text-foreground transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="mt-0 sm:mt-5 inline-flex items-center gap-2 text-base leading-7 font-medium text-foreground transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
         <Mail aria-hidden="true" className="size-4" />
         hello@hmstore.vn
