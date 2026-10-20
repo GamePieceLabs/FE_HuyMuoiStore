@@ -8,8 +8,6 @@ const navigationItems = [
   { label: "Chi tiết", href: "/product/slug-id" },
   { label: "Blog", href: "/blogs" },
   { label: "Giới thiệu", href: "/about-us" },
-  { label: "Cửa hàng", href: "/stores" },
-  { label: "Chính sách", href: "/policies" },
 ];
 
 export function Navbar() {
