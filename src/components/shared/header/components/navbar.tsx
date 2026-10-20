@@ -41,7 +41,7 @@ export function Navbar() {
   return (
     <nav
       aria-label="Điều hướng chính"
-      className="hidden w-full md:block md:flex-1 xl:basis-7/10 xl:shrink-0 xl:grow-0"
+      className="pl-10 hidden w-full md:block md:flex-1 xl:basis-7/10 xl:shrink-0 xl:grow-0"
     >
       <ul
         ref={listRef}
@@ -58,7 +58,7 @@ export function Navbar() {
                   ref={isActive ? activeLinkRef : undefined}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                      "relative block py-2 text-md font-medium text-foreground transition-[font-weight] duration-300 hover:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                    "relative block py-2 text-md font-medium text-foreground transition-[font-weight] duration-300 hover:font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                     isActive && "font-semibold",
                   )}
                   href={href}
