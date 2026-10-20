@@ -2,10 +2,14 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { LanguageSelector } from "@/components/shared/language-selector";
 import { cn } from "@/lib/utils";
-import { navigationItems } from "../data/navigation-items";
+import {
+  isNavigationItemActive,
+  navigationItems,
+} from "../data/navigation-items";
 import {
   Sheet,
   SheetContent,
@@ -17,6 +21,8 @@ import {
 import { Button } from "@/components/ui/button";
 
 export function MobileNavigation() {
+  const pathname = usePathname();
+
   return (
     <Sheet>
       <SheetTrigger
@@ -45,8 +51,11 @@ export function MobileNavigation() {
         <div className="px-4 py-4">
           <nav aria-label="Điều hướng chính">
             <ul className="flex flex-col gap-1">
-              {navigationItems.map(({ label, href, isActive = false }) => (
-                <li key={href}>
+              {navigationItems.map(({ label, href }) => {
+                const isActive = isNavigationItemActive(pathname, href);
+
+                return (
+                  <li key={href}>
                   <Link
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
@@ -57,8 +66,9 @@ export function MobileNavigation() {
                   >
                     {label}
                   </Link>
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>
