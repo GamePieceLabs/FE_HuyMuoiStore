@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { LanguageSelector } from "@/components/shared/language-selector";
 import { cn } from "@/lib/utils";
-import { navigationItems } from "../../data/navigation-items";
+import { navigationItems } from "../data/navigation-items";
 import {
   Sheet,
   SheetContent,

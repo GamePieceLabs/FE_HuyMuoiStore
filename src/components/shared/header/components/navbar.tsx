@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import { navigationItems } from "../../data/navigation-items";
+import { navigationItems } from "../data/navigation-items";
 
 export function Navbar() {
   return (
     <nav
       aria-label="Điều hướng chính"
-      className="w-full xl:basis-7/10 xl:shrink-0 xl:grow-0"
+      className="hidden w-full xl:block xl:basis-7/10 xl:shrink-0 xl:grow-0"
     >
       <ul className="flex items-center gap-x-5 gap-y-2 text-sm font-medium xl:gap-x-6">
         {navigationItems.map(({ label, href, isActive = false }) => (

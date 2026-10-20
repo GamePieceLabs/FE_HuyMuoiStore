@@ -8,7 +8,7 @@ const secondaryLinks = [
 
 export function HeaderTopbar() {
   return (
-    <div className="bg-black text-white">
+    <div className="hidden bg-black text-white xl:block">
       <nav aria-label="Liên kết hỗ trợ" className="mx-13 px-3.75">
         <ul className="flex h-9 items-center justify-end gap-1 text-xs font-medium tracking-wide">
           {secondaryLinks.map(({ label, href, icon: Icon }) => (

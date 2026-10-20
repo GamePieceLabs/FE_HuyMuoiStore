@@ -14,11 +14,7 @@ const utilityItems = [
   { label: "Giỏ hàng", icon: ShoppingBag },
 ];
 
-interface HeaderUtilitiesProps {
-  showLanguage?: boolean;
-}
-
-export function HeaderUtilities({ showLanguage = true }: HeaderUtilitiesProps) {
+export function HeaderUtilities() {
   return (
     <ul
       aria-label="Tiện ích"
@@ -33,11 +29,9 @@ export function HeaderUtilities({ showLanguage = true }: HeaderUtilitiesProps) {
           <span className="sr-only">{label}</span>
         </li>
       ))}
-      {showLanguage && (
-        <li className="flex size-11 items-center justify-center text-foreground">
-          <LanguageSelector />
-        </li>
-      )}
+      <li className="hidden size-11 items-center justify-center text-foreground xl:flex">
+        <LanguageSelector />
+      </li>
     </ul>
   );
 }
