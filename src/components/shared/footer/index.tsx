@@ -5,11 +5,11 @@ import {
   YoutubeOutlined,
 } from "@lineiconshq/free-icons";
 import { Lineicons } from "@lineiconshq/react-lineicons";
-import { FooterAbout } from "./footer/footer-about";
-import { FooterMobileAccordion } from "./footer/footer-mobile-accordion";
-import { FooterLinks } from "./footer/footer-links";
-import { FooterLinksSecondary } from "./footer/footer-links-secondary";
-import { FooterNewsletter } from "./footer/footer-newsletter";
+import { FooterAbout } from "./components/footer-about";
+import { FooterMobileAccordion } from "./components/footer-mobile-accordion";
+import { FooterLinks } from "./components/footer-links";
+import { FooterLinksSecondary } from "./components/footer-links-secondary";
+import { FooterNewsletter } from "./components/footer-newsletter";
 
 export function Footer() {
   return (
