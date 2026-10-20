@@ -10,7 +10,9 @@ export function Navbar() {
       className="hidden w-full xl:block xl:basis-7/10 xl:shrink-0 xl:grow-0"
     >
       <ul className="flex items-center gap-x-5 gap-y-2 text-sm font-medium xl:gap-x-6">
-        {navigationItems.map(({ label, href, isActive = false }) => (
+        {navigationItems
+          .filter(({ mobileOnly }) => !mobileOnly)
+          .map(({ label, href, isActive = false }) => (
           <li key={href} className="whitespace-nowrap">
             <Link
               aria-current={isActive ? "page" : undefined}
@@ -25,7 +27,7 @@ export function Navbar() {
               {label}
             </Link>
           </li>
-        ))}
+          ))}
       </ul>
     </nav>
   );
