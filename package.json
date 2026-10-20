@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
+    "@lineiconshq/free-icons": "^1.0.7",
+    "@lineiconshq/react-lineicons": "^1.0.5",
     "@shadcn/react": "^0.3.1",
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.1.1",
