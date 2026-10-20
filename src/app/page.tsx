@@ -1,3 +1,5 @@
+import { HomeHero } from "@/features/home/components/home-hero";
+
 export default function Home() {
-  return <h1>Trang chủ</h1>;
+  return <HomeHero />;
 }
