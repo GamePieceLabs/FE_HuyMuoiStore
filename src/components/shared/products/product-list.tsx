@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, PackageOpen } from "lucide-react";
 
@@ -11,12 +12,11 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 
-import { productCollections } from "./data";
 import { ProductCard } from "./product-card";
 import type { ProductCollection } from "./types";
 
 interface ProductListProps {
-  collections?: readonly ProductCollection[];
+  tabs: readonly ProductCollection[];
 }
 
 function EmptyProductState({ label }: { label: string }) {
@@ -49,10 +49,39 @@ function EmptyProductState({ label }: { label: string }) {
   );
 }
 
-export function ProductList({ collections = productCollections }: ProductListProps) {
-  const firstCollection = collections[0];
+export function ProductList({ tabs }: ProductListProps) {
+  const firstTab = tabs[0];
+  const [activeTab, setActiveTab] = useState(firstTab?.id ?? "");
+  const tabsListRef = useRef<HTMLDivElement>(null);
+  const activeTabRef = useRef<HTMLButtonElement>(null);
 
-  if (!firstCollection) return null;
+  useEffect(() => {
+    const updateIndicator = () => {
+      const tabsList = tabsListRef.current;
+      const activeTabElement = activeTabRef.current;
+
+      if (!tabsList || !activeTabElement) return;
+
+      const tabsListRect = tabsList.getBoundingClientRect();
+      const activeTabRect = activeTabElement.getBoundingClientRect();
+
+      tabsList.style.setProperty(
+        "--tabs-indicator-left",
+        `${activeTabRect.left - tabsListRect.left}px`,
+      );
+      tabsList.style.setProperty(
+        "--tabs-indicator-width",
+        `${activeTabRect.width}px`,
+      );
+    };
+
+    updateIndicator();
+    window.addEventListener("resize", updateIndicator);
+
+    return () => window.removeEventListener("resize", updateIndicator);
+  }, [activeTab]);
+
+  if (!firstTab) return null;
 
   return (
     <section aria-labelledby="home-products-title" className="w-full">
@@ -60,22 +89,34 @@ export function ProductList({ collections = productCollections }: ProductListPro
         Sản phẩm nổi bật
       </h2>
 
-      <Tabs defaultValue={firstCollection.id} className="w-full">
+      <Tabs
+        defaultValue={firstTab.id}
+        onValueChange={(value) => {
+          if (value) setActiveTab(value);
+        }}
+        className="w-full"
+      >
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
           <TabsList
+            ref={tabsListRef}
             aria-label="Danh mục sản phẩm"
             variant="line"
-            className="min-w-0 flex-1 justify-start gap-6 overflow-x-auto rounded-none p-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-9"
+            className="relative min-w-0 flex-1 justify-start gap-6 overflow-x-auto rounded-none p-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-9"
           >
-            {collections.map((collection) => (
+            {tabs.map((tab) => (
               <TabsTrigger
-                key={collection.id}
-                value={collection.id}
-                className="h-10 flex-none px-0 text-base font-medium sm:text-lg"
+                key={tab.id}
+                ref={tab.id === activeTab ? activeTabRef : undefined}
+                value={tab.id}
+                className="h-10 flex-none px-0 text-base font-medium after:hidden sm:text-lg"
               >
-                {collection.label}
+                {tab.label}
               </TabsTrigger>
             ))}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-0 left-[var(--tabs-indicator-left)] h-0.5 w-[var(--tabs-indicator-width)] bg-foreground transition-[left,width] duration-300 ease-out"
+            />
           </TabsList>
 
           <Link
@@ -87,20 +128,20 @@ export function ProductList({ collections = productCollections }: ProductListPro
           </Link>
         </div>
 
-        {collections.map((collection) => (
+        {tabs.map((tab) => (
           <TabsContent
-            key={collection.id}
-            value={collection.id}
+            key={tab.id}
+            value={tab.id}
             className="mt-5 sm:mt-6"
           >
-            {collection.products.length > 0 ? (
+            {tab.products.length > 0 ? (
               <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
-                {collection.products.map((product) => (
+                {tab.products.map((product) => (
                   <ProductCard key={product.slug} product={product} />
                 ))}
               </div>
             ) : (
-              <EmptyProductState label={collection.label} />
+              <EmptyProductState label={tab.label} />
             )}
           </TabsContent>
         ))}

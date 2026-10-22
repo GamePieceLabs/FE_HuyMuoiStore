@@ -1,4 +1,4 @@
-import type { Product, ProductCollection } from "./types";
+import type { Product } from "./types";
 
 const productImages = {
   mintCardigan: "/images/home/products/mint-cardigan.svg",
@@ -15,7 +15,7 @@ const productImages = {
   woolCoat: "/images/home/products/wool-coat.svg",
 } as const;
 
-const products = [
+export const products = [
   {
     slug: "ao-cardigan-det-gan-buoc-no-ngan-xanh-mint",
     name: "Áo Cardigan Dệt Gân Buộc Nơ Ngắn Xanh Mint Trendy",
@@ -96,51 +96,4 @@ const products = [
     colors: ["#ffffff", "#111111", "#d9c5b5"],
     additionalColors: 3,
   },
-  {
-    slug: "dam-linen-co-v-tay-phong-xanh-nhat",
-    name: "Đầm Linen Cổ V Tay Phồng - Xanh Nhạt Dịu Mát",
-    image: productImages.linenDress,
-    secondaryImage: productImages.pastelCardigan,
-    price: "329,000đ",
-    originalPrice: "459,000đ",
-    discount: "-28%",
-    colors: ["#bfd5d3", "#ffffff"],
-  },
-  {
-    slug: "ao-so-mi-lua-tay-dai-hong-phai",
-    name: "Áo Sơ Mi Lụa Tay Dài - Hồng Phấn Nhẹ Nhàng",
-    image: productImages.silkShirt,
-    secondaryImage: productImages.knitPink,
-    price: "279,000đ",
-    colors: ["#f1c4c9", "#ffffff", "#c9d5c3"],
-    sizesLabel: "+2 Kích thước",
-  },
-  {
-    slug: "quan-jeans-ong-dung-xanh-nhat",
-    name: "Quần Jeans Ống Đứng Cạp Cao - Xanh Denim Nhạt",
-    image: productImages.denimJeans,
-    secondaryImage: productImages.wideTrousers,
-    price: "319,000đ",
-    originalPrice: "450,000đ",
-    discount: "-29%",
-    colors: ["#9fb6c4", "#233b50"],
-    sizesLabel: "+5 Kích thước",
-  },
-  {
-    slug: "ao-khoac-cardigan-det-tho-xam-sang",
-    name: "Áo Khoác Cardigan Dệt Thô - Xám Sáng Ấm Áp",
-    image: productImages.woolCoat,
-    secondaryImage: productImages.utilityJacket,
-    price: "359,000đ",
-    originalPrice: "520,000đ",
-    discount: "-31%",
-    colors: ["#b9b4ae", "#d9c6b4", "#28302d"],
-    additionalColors: 2,
-  },
 ] satisfies readonly Product[];
-
-export const productCollections: readonly ProductCollection[] = [
-  { id: "featured", label: "Nổi bật", products },
-  { id: "best-selling", label: "Bán chạy", products },
-  { id: "sale", label: "Khuyến mãi", products },
-];
