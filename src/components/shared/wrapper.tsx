@@ -6,8 +6,8 @@ interface WrapperProps {
 
 export function Wrapper({ children }: WrapperProps) {
   return (
-    <div className="w-full py-10 sm:py-12 md:py-16 lg:py-20">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 md:px-20 lg:px-10 xl:px-12">
+    <div className="w-full py-10 sm:py-12 md:py-16 lg:py-10">
+      <div className="mx-[115px] px-4 sm:px-6 md:px-20 lg:px-10 xl:px-5">
         {children}
       </div>
     </div>

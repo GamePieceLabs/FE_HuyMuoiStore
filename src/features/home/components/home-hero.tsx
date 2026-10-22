@@ -13,9 +13,9 @@ export function HomeHero({ imageUrl = defaultHeroImage }: HomeHeroProps) {
   return (
     <section
       aria-labelledby="home-hero-title"
-      className="w-full bg-background px-[15px]"
+      className="w-full bg-background px-[20px]"
     >
-      <div className="relative isolate mx-auto w-[95%] overflow-hidden rounded-4xl bg-muted text-foreground">
+      <div className="relative isolate overflow-hidden rounded-4xl bg-muted text-foreground">
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-20 bg-cover bg-center blur-[3px]"
