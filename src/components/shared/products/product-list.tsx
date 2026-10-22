@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, PackageOpen } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Tabs,
   TabsContent,
@@ -17,6 +18,8 @@ import type { ProductCollection } from "./types";
 
 interface ProductListProps {
   tabs: readonly ProductCollection[];
+  titleId?: string;
+  variant?: "default" | "compact";
 }
 
 function EmptyProductState({ label }: { label: string }) {
@@ -49,7 +52,11 @@ function EmptyProductState({ label }: { label: string }) {
   );
 }
 
-export function ProductList({ tabs }: ProductListProps) {
+export function ProductList({
+  tabs,
+  titleId = "home-products-title",
+  variant = "default",
+}: ProductListProps) {
   const firstTab = tabs[0];
   const [activeTab, setActiveTab] = useState(firstTab?.id ?? "");
   const tabsListRef = useRef<HTMLDivElement>(null);
@@ -84,8 +91,8 @@ export function ProductList({ tabs }: ProductListProps) {
   if (!firstTab) return null;
 
   return (
-    <section aria-labelledby="home-products-title" className="w-full">
-      <h2 id="home-products-title" className="sr-only">
+    <section aria-labelledby={titleId} className="w-full">
+      <h2 id={titleId} className="sr-only">
         Sản phẩm nổi bật
       </h2>
 
@@ -101,14 +108,20 @@ export function ProductList({ tabs }: ProductListProps) {
             ref={tabsListRef}
             aria-label="Danh mục sản phẩm"
             variant="line"
-            className="relative min-w-0 flex-1 justify-start gap-6 overflow-x-auto rounded-none p-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-9"
+            className={cn(
+              "relative min-w-0 flex-1 justify-start gap-6 overflow-x-auto rounded-none p-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+              variant === "compact" ? "sm:gap-6" : "sm:gap-9",
+            )}
           >
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 ref={tab.id === activeTab ? activeTabRef : undefined}
                 value={tab.id}
-                className="h-10 flex-none px-0 text-base font-medium after:hidden sm:text-lg"
+                className={cn(
+                  "h-10 flex-none px-0 text-base font-medium after:hidden",
+                  variant === "compact" ? "sm:text-base" : "sm:text-lg",
+                )}
               >
                 {tab.label}
               </TabsTrigger>
@@ -135,7 +148,12 @@ export function ProductList({ tabs }: ProductListProps) {
             className="mt-5 sm:mt-6"
           >
             {tab.products.length > 0 ? (
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
+              <div
+                className={cn(
+                  "grid grid-cols-2 gap-3 sm:gap-4",
+                  variant === "compact" ? "lg:grid-cols-2 lg:gap-4" : "lg:grid-cols-4 lg:gap-5",
+                )}
+              >
                 {tab.products.map((product) => (
                   <ProductCard key={product.slug} product={product} />
                 ))}

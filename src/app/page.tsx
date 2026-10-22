@@ -1,6 +1,7 @@
 import { HomeHero } from "@/features/home/components/home-hero";
 import { HomeAbout } from "@/features/home/components/home-about";
 import { HomeInspiration } from "@/features/home/components/home-inspiration";
+import { HomeStyleShowcase } from "@/features/home/components/home-style-showcase";
 import { PolicyList } from "@/components/shared/policies/policy-list";
 import { products } from "@/components/shared/products/data";
 import { ProductList } from "@/components/shared/products/product-list";
@@ -13,11 +14,6 @@ const featuredProductTabs = [
   { id: "sale", label: "Khuyến mãi", products },
 ] satisfies readonly ProductCollection[];
 
-const categoryProductTabs = [
-  { id: "office-fashion", label: "Thời trang văn phòng", products },
-  { id: "accessories", label: "Phụ kiện", products: [] },
-] satisfies readonly ProductCollection[];
-
 export default function Home() {
   return (
     <>
@@ -27,8 +23,7 @@ export default function Home() {
         <PolicyList />
         <HomeAbout />
         <HomeInspiration />
-        <ProductList tabs={categoryProductTabs} />
-        <HomeInspiration/>
+        <HomeStyleShowcase />
       </Wrapper>
     </>
   );

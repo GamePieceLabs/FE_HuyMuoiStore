@@ -3,6 +3,31 @@
 @import "shadcn/tailwind.css";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@keyframes home-style-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-style-marquee-track {
+  animation: home-style-marquee 34s linear infinite;
+  will-change: transform;
+}
+
+.home-style-marquee-track:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-style-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
