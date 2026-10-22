@@ -53,7 +53,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </Badge>
         ) : null}
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex justify-center opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100">
+        <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
           <Link
             href={href}
             className="rounded-full pointer-events-auto inline-flex min-h-9 min-w-70 items-center justify-center gap-1.5 bg-background/95 px-5 text-xs font-medium text-foreground shadow-sm backdrop-blur-sm transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"

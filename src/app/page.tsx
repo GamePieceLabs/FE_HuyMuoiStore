@@ -1,6 +1,7 @@
 import { HomeHero } from "@/features/home/components/home-hero";
 import { HomeAbout } from "@/features/home/components/home-about";
 import { HomeInspiration } from "@/features/home/components/home-inspiration";
+import { HomeReviewList } from "@/features/home/components/home-review-list";
 import { HomeStyleShowcase } from "@/features/home/components/home-style-showcase";
 import { PolicyList } from "@/components/shared/policies/policy-list";
 import { products } from "@/components/shared/products/data";
@@ -25,6 +26,7 @@ export default function Home() {
         <HomeInspiration />
         <HomeStyleShowcase />
       </Wrapper>
+      <HomeReviewList />
     </>
   );
 }

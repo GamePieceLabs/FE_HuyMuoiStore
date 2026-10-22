@@ -37,14 +37,14 @@ function HomeProductSlider({
     <section aria-labelledby={`${id}-title`}>
       <Carousel
         aria-label={`Sản phẩm ${label.toLowerCase()}`}
-        className="w-full"
+        className="w-full min-w-0"
         opts={{ align: "start", loop: true }}
       >
-        <div className="mb-6 flex items-end justify-between gap-4">
-          <div>
+        <div className="mb-5 flex items-center justify-between gap-3 sm:mb-6 sm:gap-4">
+          <div className="min-w-0">
             <h3
               id={`${id}-title`}
-              className="mt-2 font-heading text-3xl leading-none font-medium tracking-tight text-foreground"
+              className="font-heading text-2xl leading-tight font-medium tracking-tight text-foreground sm:text-3xl"
             >
               {label}
             </h3>
@@ -52,11 +52,11 @@ function HomeProductSlider({
           <div className="flex shrink-0 items-center gap-2">
             <CarouselPrevious
               aria-label={`Xem ${label.toLowerCase()} trước`}
-              className="static my-0 size-9 translate-y-0 border-border/80 bg-background text-foreground shadow-sm hover:bg-muted"
+              className="static my-0 size-11 translate-y-0 border-border/80 bg-background text-foreground shadow-sm hover:bg-muted"
             />
             <CarouselNext
               aria-label={`Xem ${label.toLowerCase()} tiếp theo`}
-              className="static my-0 size-9 translate-y-0 border-border/80 bg-background text-foreground shadow-sm hover:bg-muted"
+              className="static my-0 size-11 translate-y-0 border-border/80 bg-background text-foreground shadow-sm hover:bg-muted"
             />
           </div>
         </div>
@@ -65,7 +65,7 @@ function HomeProductSlider({
           {sliderProducts.map((product) => (
             <CarouselItem
               key={product.slug}
-              className="basis-full pl-3 sm:basis-1/2"
+              className="basis-[82%] pl-3 sm:basis-1/2"
             >
               <ProductCard product={product} />
             </CarouselItem>
