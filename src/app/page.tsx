@@ -15,6 +15,11 @@ const featuredProductTabs = [
   { id: "sale", label: "Khuyến mãi", products },
 ] satisfies readonly ProductCollection[];
 
+const categoryProductTabs = [
+  { id: "office-wear", label: "Thời trang văn phòng", products },
+  { id: "accessories", label: "Phụ kiện", products },
+] satisfies readonly ProductCollection[];
+
 export default function Home() {
   return (
     <>
@@ -23,6 +28,10 @@ export default function Home() {
         <ProductList tabs={featuredProductTabs} />
         <PolicyList />
         <HomeAbout />
+        <ProductList
+          tabs={categoryProductTabs}
+          titleId="home-category-products-title"
+        />
         <HomeInspiration />
         <HomeStyleShowcase />
       </Wrapper>
