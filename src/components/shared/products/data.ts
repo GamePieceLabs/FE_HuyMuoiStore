@@ -1,26 +1,11 @@
 import type { Product } from "./types";
 
-const productImages = {
-  mintCardigan: "/images/home/products/mint-cardigan.svg",
-  pastelCardigan: "/images/home/products/pastel-cardigan.svg",
-  knitPink: "/images/home/products/knit-pink.svg",
-  linenBlazer: "/images/home/products/linen-blazer.svg",
-  pleatedSkirt: "/images/home/products/pleated-skirt.svg",
-  wideTrousers: "/images/home/products/wide-trousers.svg",
-  cottonTee: "/images/home/products/cotton-tee.svg",
-  linenDress: "/images/home/products/linen-dress.svg",
-  silkShirt: "/images/home/products/silk-shirt.svg",
-  denimJeans: "/images/home/products/denim-jeans.svg",
-  utilityJacket: "/images/home/products/utility-jacket.svg",
-  woolCoat: "/images/home/products/wool-coat.svg",
-} as const;
-
 export const products = [
   {
     slug: "ao-cardigan-det-gan-buoc-no-ngan-xanh-mint",
     name: "Áo Cardigan Dệt Gân Buộc Nơ Ngắn Xanh Mint Trendy",
-    image: productImages.mintCardigan,
-    secondaryImage: productImages.pastelCardigan,
+    image: "/images/home/products/mint-cardigan-flat.jpg",
+    secondaryImage: "/images/home/products/mint-cardigan-model.jpg",
     price: "99,000đ",
     originalPrice: "150,000đ",
     discount: "-34%",
@@ -29,16 +14,16 @@ export const products = [
   {
     slug: "ao-cardigan-nu-dang-rong-co-v-xanh-pastel",
     name: "Áo Cardigan Nữ Dáng Rộng Cổ V - Xanh Pastel Nhẹ Nhàng",
-    image: productImages.pastelCardigan,
-    secondaryImage: productImages.mintCardigan,
+    image: "/images/home/products/pastel-cardigan.svg",
+    secondaryImage: "/images/home/products/mint-cardigan-flat.jpg",
     price: "220,000đ",
     colors: ["#f8f8f8", "#fff500", "#cfcfcf"],
   },
   {
     slug: "ao-det-kim-luoi-mong-dang-rong",
     name: "Áo Dệt Kim Lưới Mỏng Dáng Rộng - Thoáng Khí, Phối Đồ Thanh Lịch",
-    image: productImages.knitPink,
-    secondaryImage: productImages.silkShirt,
+    image: "/images/home/products/knit-pink.svg",
+    secondaryImage: "/images/home/products/silk-shirt.svg",
     price: "360,000đ",
     originalPrice: "460,000đ",
     discount: "-22%",
@@ -48,8 +33,8 @@ export const products = [
   {
     slug: "ao-det-kim-mong-rong-tay-dai-hong-pastel",
     name: "Áo Dệt Kim Mỏng Rộng Tay Dài - Hồng Pastel",
-    image: productImages.knitPink,
-    secondaryImage: productImages.woolCoat,
+    image: "/images/home/products/knit-pink.svg",
+    secondaryImage: "/images/home/products/wool-coat.svg",
     price: "270,000đ",
     originalPrice: "490,000đ",
     discount: "-45%",
@@ -60,8 +45,8 @@ export const products = [
   {
     slug: "ao-blazer-linen-dang-rong-be-sang",
     name: "Áo Blazer Linen Dáng Rộng - Beige Thanh Lịch",
-    image: productImages.linenBlazer,
-    secondaryImage: productImages.utilityJacket,
+    image: "/images/home/products/linen-blazer.svg",
+    secondaryImage: "/images/home/products/utility-jacket.svg",
     price: "399,000đ",
     originalPrice: "599,000đ",
     discount: "-33%",
@@ -71,16 +56,16 @@ export const products = [
   {
     slug: "chan-vay-midi-xep-ly-den",
     name: "Chân Váy Midi Xếp Ly Cạp Cao - Đen Cơ Bản",
-    image: productImages.pleatedSkirt,
-    secondaryImage: productImages.linenDress,
+    image: "/images/home/products/pleated-skirt.svg",
+    secondaryImage: "/images/home/products/linen-dress.svg",
     price: "249,000đ",
     colors: ["#111111", "#d8c6b2"],
   },
   {
     slug: "quan-ong-rong-vai-tuyen-xam",
     name: "Quần Ống Rộng Vải Tuyết Mưa - Xám Khói",
-    image: productImages.wideTrousers,
-    secondaryImage: productImages.denimJeans,
+    image: "/images/home/products/wide-trousers.svg",
+    secondaryImage: "/images/home/products/denim-jeans.svg",
     price: "289,000đ",
     originalPrice: "399,000đ",
     discount: "-28%",
@@ -90,8 +75,8 @@ export const products = [
   {
     slug: "ao-thun-co-tron-cotton-trang",
     name: "Áo Thun Cổ Tròn Cotton Premium - Trắng Tối Giản",
-    image: productImages.cottonTee,
-    secondaryImage: productImages.knitPink,
+    image: "/images/home/products/cotton-tee.svg",
+    secondaryImage: "/images/home/products/knit-pink.svg",
     price: "149,000đ",
     colors: ["#ffffff", "#111111", "#d9c5b5"],
     additionalColors: 3,
