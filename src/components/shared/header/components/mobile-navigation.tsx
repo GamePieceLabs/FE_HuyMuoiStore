@@ -29,7 +29,7 @@ export function MobileNavigation() {
         render={
           <Button
             aria-label="Mở menu điều hướng"
-            className="size-11 shrink-0 md:hidden"
+            className="size-11 shrink-0 lg:hidden"
             size="icon"
             variant="ghost"
           />

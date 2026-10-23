@@ -9,7 +9,7 @@ export function Header() {
   return (
     <ScrollBorderHeader>
       <HeaderTopbar />
-      <div className="w-full mx-auto px-[15px] max-w-[1770px] flex items-center h-[66.5px]">
+      <div className="mx-auto flex w-full max-w-[1770px] items-center gap-2 px-[15px] py-3 sm:gap-4 sm:py-4 lg:gap-8 lg:py-5">
         <MobileNavigation />
         <Logo />
         <Navbar />
