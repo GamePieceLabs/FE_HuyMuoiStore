@@ -35,7 +35,7 @@ export function HomeAbout() {
       </div>
 
       {/* Khung ảnh bên phải */}
-      <div className="group relative z-10 w-full overflow-hidden bg-muted lg:order-last lg:aspect-auto lg:h-full lg:max-h-none max-md:rounded-tl-2xl max-md:rounded-tr-2xl sm:rounded-tr-2xl sm:rounded-br-2xl">
+      <div className="group relative z-10 w-full overflow-hidden bg-muted lg:order-last lg:aspect-auto lg:h-full lg:max-h-none max-lg:rounded-tl-2xl max-md:rounded-tr-2xl sm:rounded-tr-2xl lg:rounded-br-2xl">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={aboutImageUrl}

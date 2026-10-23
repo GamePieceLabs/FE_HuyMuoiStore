@@ -6,12 +6,7 @@ import { ArrowUpRight, PackageOpen } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { ProductCard } from "./product-card";
 import type { ProductCollection } from "./types";
@@ -142,16 +137,14 @@ export function ProductList({
         </div>
 
         {tabs.map((tab) => (
-          <TabsContent
-            key={tab.id}
-            value={tab.id}
-            className="mt-5 sm:mt-6"
-          >
+          <TabsContent key={tab.id} value={tab.id} className="mt-5 sm:mt-6">
             {tab.products.length > 0 ? (
               <div
                 className={cn(
-                  "grid grid-cols-2 gap-3 sm:gap-4",
-                  variant === "compact" ? "lg:grid-cols-2 lg:gap-4" : "lg:grid-cols-4 lg:gap-5",
+                  "grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4",
+                  variant === "compact"
+                    ? "lg:grid-cols-2 lg:gap-4"
+                    : "lg:grid-cols-4 lg:gap-5",
                 )}
               >
                 {tab.products.map((product) => (

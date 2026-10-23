@@ -10,10 +10,7 @@ const policies = [
 
 export function PolicyList() {
   return (
-    <section
-      aria-label="Chính sách HM Store"
-      className="w-full"
-    >
+    <section aria-label="Chính sách HM Store" className="w-full pt-0!">
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {policies.map((policy) => (
           <li
