@@ -18,7 +18,11 @@ export function HeaderTopbar() {
                 href={href}
               >
                 <span className="flex size-5 items-center justify-center rounded-sm bg-white/10 text-white/70 transition-colors group-hover:bg-white/15 group-hover:text-white">
-                  <Icon aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
+                  <Icon
+                    aria-hidden="true"
+                    className="size-3.5"
+                    strokeWidth={1.75}
+                  />
                 </span>
                 {label}
               </Link>
