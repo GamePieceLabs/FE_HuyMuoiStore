@@ -1,3 +1,11 @@
+import Link from "next/link";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Wrapper } from "@/components/shared/wrapper";
 import {
   Carousel,
@@ -6,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 const reviews = [
   {
@@ -57,6 +66,96 @@ const reviews = [
       "Sản phẩm rất tốt và bền, tôi đã sử dụng hơn 3 tháng và vẫn thích sử dụng hằng ngày, phù hợp đi làm lẫn đi chơi.",
   },
 ] as const;
+
+const supportFaqs = [
+  {
+    id: "shipping",
+    question: "Thời gian giao hàng là bao lâu?",
+    answer:
+      "Thời gian giao hàng thường từ 2–5 ngày làm việc tùy khu vực. Với đơn hàng nội thành, thời gian có thể nhanh hơn.",
+  },
+  {
+    id: "packaging",
+    question: "Sản phẩm có được đóng gói cẩn thận không?",
+    answer:
+      "Tất cả sản phẩm đều được đóng gói kỹ lưỡng, đảm bảo an toàn trong quá trình vận chuyển và giữ nguyên chất lượng khi đến tay bạn.",
+  },
+  {
+    id: "international-shipping",
+    question: "Có giao hàng quốc tế không?",
+    answer:
+      "Có, chúng tôi hỗ trợ giao hàng quốc tế đến nhiều quốc gia. Thời gian và chi phí vận chuyển sẽ tùy thuộc vào địa điểm nhận hàng.",
+  },
+  {
+    id: "payment",
+    question: "Có những phương thức thanh toán nào?",
+    answer:
+      "Chúng tôi hỗ trợ nhiều hình thức thanh toán như: Thanh toán khi nhận hàng (COD), chuyển khoản ngân hàng, ví điện tử và thẻ tín dụng.",
+  },
+] as const;
+
+function HomeSupportFaqs() {
+  return (
+    <section aria-labelledby="home-support-faqs-title">
+      <div className="grid items-center gap-8 lg:grid-cols-3 lg:gap-10">
+        <div>
+          <h2
+            id="home-support-faqs-title"
+            className="mt-3 max-w-sm font-heading text-3xl leading-tight font-bold tracking-tight sm:text-2xl"
+          >
+            Chúng tôi sẵn sàng hỗ trợ bạn!
+          </h2>
+          <p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground sm:text-base">
+            Chúng tôi tạo ra những sản phẩm an toàn, hiệu quả và mang lại cảm
+            giác dễ chịu khi sử dụng.
+            <br />
+            Bạn có câu hỏi về sản phẩm?
+            <br />
+            Hãy tìm câu trả lời bên dưới hoặc liên hệ với chúng tôi.
+          </p>
+          <Link
+            href="/about-us"
+            className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-black px-8 text-sm font-medium text-white transition-colors hover:bg-black/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 dark:bg-white dark:text-black dark:hover:bg-white/90"
+          >
+            Xem thêm
+          </Link>
+        </div>
+
+        <div className="relative aspect-square">
+          <Image
+            src="https://cdn.hstatic.net/themes/200001170195/1001480974/14/loomline_index_faqs_img.jpg?v=321"
+            alt="Chúng tôi sẵn sàng hỗ trợ bạn!"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <Accordion
+          aria-label="Câu hỏi thường gặp"
+          defaultValue={["shipping"]}
+          className="h-full gap-y-5"
+        >
+          {supportFaqs.map((faq) => (
+            <AccordionItem
+              className="rounded-2xl border border-zinc-300 p-0 transition-colors data-open:bg-white"
+              key={faq.id}
+              value={faq.id}
+            >
+              <AccordionTrigger className="items-center px-5 py-5 text-sm font-bold no-underline text-wrap hover:no-underline sm:px-6 sm:py-5 sm:text-[20px] aria-expanded:font-semibold">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="border-t border-zinc-200 px-5 pt-3 pb-5 sm:px-6">
+                <p className="text-sm leading-6 text-muted-foreground sm:text-base">
+                  {faq.answer}
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
 
 export function HomeReviewList() {
   return (
@@ -124,6 +223,7 @@ export function HomeReviewList() {
             ))}
           </CarouselContent>
         </Carousel>
+        <HomeSupportFaqs />
       </Wrapper>
     </section>
   );
