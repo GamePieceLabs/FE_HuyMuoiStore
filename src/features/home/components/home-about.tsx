@@ -7,7 +7,7 @@ export function HomeAbout() {
   return (
     <section
       aria-labelledby="home-about-title"
-      className="relative isolate grid grid-cols-1 items-stretch overflow-visible rounded-2xl border border-border bg-[#D7F8FB] lg:grid-cols-2 dark:bg-[#3a2e2a]"
+      className="relative isolate grid grid-cols-1 items-stretch overflow-visible rounded-2xl py-0! border border-border bg-[#D7F8FB] lg:grid-cols-2 dark:bg-[#3a2e2a]"
     >
       {/* Nội dung bên trái - Màu nền phủ full toàn bộ bên trái */}
       <div className="relative z-0 order-last flex flex-col items-center justify-center px-6 py-6 text-center sm:px-8 sm:py-8 lg:order-first lg:px-10">
