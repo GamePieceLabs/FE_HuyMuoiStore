@@ -97,15 +97,15 @@ const supportFaqs = [
 function HomeSupportFaqs() {
   return (
     <section aria-labelledby="home-support-faqs-title">
-      <div className="grid items-center gap-8 lg:grid-cols-3 lg:gap-10">
-        <div>
+      <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+        <div className="order-1 min-w-0">
           <h2
             id="home-support-faqs-title"
-            className="mt-3 max-w-sm font-heading text-3xl leading-tight font-bold tracking-tight sm:text-2xl"
+            className="mt-3 max-w-sm font-heading text-2xl leading-tight font-bold tracking-tight sm:text-3xl"
           >
             Chúng tôi sẵn sàng hỗ trợ bạn!
           </h2>
-          <p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground sm:text-base">
+          <p className="mt-4 max-w-md text-base leading-7 text-muted-foreground">
             Chúng tôi tạo ra những sản phẩm an toàn, hiệu quả và mang lại cảm
             giác dễ chịu khi sử dụng.
             <br />
@@ -121,7 +121,7 @@ function HomeSupportFaqs() {
           </Link>
         </div>
 
-        <div className="relative aspect-square">
+        <div className="relative order-3 aspect-[4/3] w-full overflow-hidden rounded-2xl sm:aspect-[16/10] md:order-2 lg:aspect-square">
           <Image
             src="https://cdn.hstatic.net/themes/200001170195/1001480974/14/loomline_index_faqs_img.jpg?v=321"
             alt="Chúng tôi sẵn sàng hỗ trợ bạn!"
@@ -133,19 +133,19 @@ function HomeSupportFaqs() {
         <Accordion
           aria-label="Câu hỏi thường gặp"
           defaultValue={["shipping"]}
-          className="h-full gap-y-5"
+          className="order-2 min-w-0 gap-y-3 md:order-3 md:col-span-2 sm:gap-y-4 lg:col-span-1 lg:gap-y-5 lg:h-full"
         >
           {supportFaqs.map((faq) => (
             <AccordionItem
-              className="rounded-2xl border border-zinc-300 p-0 transition-colors data-open:bg-white"
+              className="rounded-xl border border-zinc-300 p-0 transition-colors data-open:bg-white sm:rounded-2xl"
               key={faq.id}
               value={faq.id}
             >
-              <AccordionTrigger className="items-center px-5 py-5 text-sm font-bold no-underline text-wrap hover:no-underline sm:px-6 sm:py-5 sm:text-[20px] aria-expanded:font-semibold">
+              <AccordionTrigger className="min-h-12 items-center px-4 py-4 text-base leading-6 font-bold no-underline text-wrap hover:no-underline sm:px-5 sm:py-5 sm:text-lg sm:leading-7 lg:px-6 lg:text-[20px] aria-expanded:font-semibold">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="border-t border-zinc-200 px-5 pt-3 pb-5 sm:px-6">
-                <p className="text-sm leading-6 text-muted-foreground sm:text-base">
+              <AccordionContent className="border-t border-zinc-200 px-4 pt-3 pb-5 sm:px-5 lg:px-6">
+                <p className="text-base leading-7 text-muted-foreground">
                   {faq.answer}
                 </p>
               </AccordionContent>
