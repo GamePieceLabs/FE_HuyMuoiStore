@@ -16,15 +16,10 @@ export default function ProductsPage() {
         className="w-full"
       >
         <div className="mx-auto flex w-full max-w-[1410px] items-start">
-          <div className="hidden lg:block">
-            <ProductsFilter />
-          </div>
+          <ProductsFilter />
 
           <div className="min-w-0 flex-1 space-y-6 px-[15px] py-10 sm:py-12 md:py-16 lg:py-10">
-            <header className="flex min-h-11 items-center justify-between lg:justify-end">
-              <div className="lg:hidden">
-                <ProductsFilter variant="mobile" />
-              </div>
+            <header className="flex min-h-11 items-center justify-end">
               <ProductsSort />
             </header>
             <ProductList
