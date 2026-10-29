@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
+// Filter option data
 const filterGroups = [
   {
     id: "vendor",
@@ -86,11 +87,18 @@ const colorOptions = [
 
 export function ProductsFilter() {
   const [isOpen, setIsOpen] = useState(false);
+  const [openAccordionItems, setOpenAccordionItems] = useState<string[]>(() => [
+    "category",
+    ...filterGroups.map((group) => group.id),
+    "color",
+    "tags",
+  ]);
 
   return (
     <aside
-      className={`relative z-10 shrink-0 pt-10 transition-[width] duration-300 ease-out sm:pt-12 md:pt-16 lg:pt-10 ${isOpen ? "w-72 sm:w-80" : "w-0"}`}
+      className={`sticky top-0 z-10 shrink-0 self-start pt-10 transition-[width] duration-300 ease-out sm:pt-12 md:pt-16 lg:pt-10 ${isOpen ? "w-72 sm:w-80" : "w-0"}`}
     >
+      {/* Filter toggle */}
       <div className={`h-11 ${isOpen ? "w-full" : "w-0"}`}>
         <button
           type="button"
@@ -104,24 +112,24 @@ export function ProductsFilter() {
         </button>
       </div>
 
+      {/* Filter groups */}
       <div
         id="products-filter-content"
         hidden={!isOpen}
-        className="mt-4 w-72 border-r border-border px-[15px] pb-6 sm:w-80"
+        className="mt-4 w-72 px-[15px] pb-6 sm:w-80"
       >
         <Accordion
           multiple
-          defaultValue={[
-            "category",
-            ...filterGroups.map((group) => group.id),
-            "color",
-            "tags",
-          ]}
+          value={openAccordionItems}
+          onValueChange={setOpenAccordionItems}
           aria-label="Các nhóm bộ lọc sản phẩm"
-          className="border-t border-border"
         >
-          <AccordionItem value="category" className="border-b border-border">
-            <AccordionTrigger className="min-h-11 items-center rounded-none py-2 font-heading text-base font-semibold hover:no-underline **:data-[slot=accordion-trigger-icon]:text-foreground">
+          {/* Categories */}
+          <AccordionItem
+            value="category"
+            className="border-0 not-last:border-b-0"
+          >
+            <AccordionTrigger className="min-h-11 items-center rounded-none border-0 py-2 font-heading text-base font-semibold hover:no-underline focus-visible:border-0 **:data-[slot=accordion-trigger-icon]:text-foreground">
               Danh mục
             </AccordionTrigger>
             <AccordionContent className="pb-3 [&_a]:no-underline [&_a]:hover:no-underline">
@@ -140,13 +148,14 @@ export function ProductsFilter() {
             </AccordionContent>
           </AccordionItem>
 
+          {/* Product attributes */}
           {filterGroups.map((group) => (
             <AccordionItem
               key={group.id}
               value={group.id}
-              className="border-b border-border"
+              className="border-0 not-last:border-b-0"
             >
-              <AccordionTrigger className="min-h-11 items-center rounded-none py-2 font-heading text-base font-semibold hover:no-underline **:data-[slot=accordion-trigger-icon]:text-foreground">
+              <AccordionTrigger className="min-h-11 items-center rounded-none border-0 py-2 font-heading text-base font-semibold hover:no-underline focus-visible:border-0 **:data-[slot=accordion-trigger-icon]:text-foreground">
                 {group.label}
               </AccordionTrigger>
               <AccordionContent className="pb-3">
@@ -160,7 +169,7 @@ export function ProductsFilter() {
                         htmlFor={optionId}
                         className="flex min-h-8 cursor-pointer items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
-                        <Checkbox id={optionId} />
+                        <Checkbox id={optionId} className="border-0 bg-muted" />
                         <span>{option}</span>
                       </label>
                     );
@@ -170,8 +179,12 @@ export function ProductsFilter() {
             </AccordionItem>
           ))}
 
-          <AccordionItem value="color" className="border-b border-border">
-            <AccordionTrigger className="min-h-11 items-center rounded-none py-2 font-heading text-base font-semibold hover:no-underline **:data-[slot=accordion-trigger-icon]:text-foreground">
+          {/* Colors */}
+          <AccordionItem
+            value="color"
+            className="border-0 not-last:border-b-0"
+          >
+            <AccordionTrigger className="min-h-11 items-center rounded-none border-0 py-2 font-heading text-base font-semibold hover:no-underline focus-visible:border-0 **:data-[slot=accordion-trigger-icon]:text-foreground">
               Màu sắc
             </AccordionTrigger>
             <AccordionContent className="pb-3">
@@ -186,11 +199,11 @@ export function ProductsFilter() {
                     <Checkbox
                       id={`color-${color.id}`}
                       aria-label={color.label}
-                      className="peer sr-only"
+                      className="peer sr-only border-0"
                     />
                     <span
                       aria-hidden="true"
-                      className="size-7 rounded-md border border-border ring-offset-2 transition-shadow group-hover:ring-2 group-hover:ring-foreground/30 peer-data-checked:ring-2 peer-data-checked:ring-foreground"
+                      className="size-7 rounded-md transition-transform group-hover:scale-110 peer-focus-visible:scale-110 peer-data-checked:scale-75"
                       style={{ backgroundColor: color.value }}
                     />
                     <span className="sr-only">{color.label}</span>
@@ -200,8 +213,12 @@ export function ProductsFilter() {
             </AccordionContent>
           </AccordionItem>
 
-          <AccordionItem value="tags" className="border-b border-border">
-            <AccordionTrigger className="min-h-11 items-center rounded-none py-2 font-heading text-base font-semibold hover:no-underline **:data-[slot=accordion-trigger-icon]:text-foreground">
+          {/* Tags */}
+          <AccordionItem
+            value="tags"
+            className="border-0 not-last:border-b-0"
+          >
+            <AccordionTrigger className="min-h-11 items-center rounded-none border-0 py-2 font-heading text-base font-semibold hover:no-underline focus-visible:border-0 **:data-[slot=accordion-trigger-icon]:text-foreground">
               Tags
             </AccordionTrigger>
             <AccordionContent className="pb-3">
@@ -215,11 +232,11 @@ export function ProductsFilter() {
                     <Checkbox
                       id={`tags-${index}`}
                       aria-label={tag}
-                      className="peer sr-only"
+                      className="peer sr-only border-0"
                     />
                     <Badge
-                      variant="outline"
-                      className="h-8 rounded-lg px-3 text-sm peer-data-checked:border-foreground peer-data-checked:bg-foreground peer-data-checked:text-background"
+                      variant="secondary"
+                      className="h-8 rounded-lg border-0 px-3 text-sm peer-data-checked:bg-foreground peer-data-checked:text-background"
                     >
                       {tag}
                     </Badge>
@@ -230,25 +247,28 @@ export function ProductsFilter() {
           </AccordionItem>
         </Accordion>
 
-        <div className="grid grid-cols-2 gap-2 pt-4">
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
-            onClick={() => setIsOpen(false)}
-            className="min-h-11"
-          >
-            Hủy
-          </Button>
-          <Button
-            type="button"
-            size="lg"
-            onClick={() => setIsOpen(false)}
-            className="min-h-11"
-          >
-            Áp dụng
-          </Button>
-        </div>
+        {/* Filter actions */}
+        {openAccordionItems.length > 0 && (
+          <div className="grid grid-cols-2 gap-2 pt-4">
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              onClick={() => setIsOpen(false)}
+              className="min-h-11 border-0"
+            >
+              Hủy
+            </Button>
+            <Button
+              type="button"
+              size="lg"
+              onClick={() => setIsOpen(false)}
+              className="min-h-11 border-0"
+            >
+              Áp dụng
+            </Button>
+          </div>
+        )}
       </div>
     </aside>
   );
