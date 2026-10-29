@@ -114,7 +114,7 @@ export function ProductsFilter() {
 
   return (
     <aside
-      className={`sticky top-0 z-10 shrink-0 self-start pt-10 transition-[width] duration-300 ease-out sm:pt-12 md:pt-16 lg:pt-10 ${isOpen ? "w-72 sm:w-80" : "w-0"}`}
+      className={`relative shrink-0 pt-10 transition-[width] duration-300 ease-out sm:pt-12 md:pt-16 lg:pt-10 ${isOpen ? "w-72 sm:w-80 sticky top-0" : "w-0"}`}
     >
       {/* Filter toggle */}
       <div className={`h-11 ${isOpen ? "w-full" : "w-0"}`}>
@@ -252,7 +252,7 @@ export function ProductsFilter() {
           <div className="grid grid-cols-2 gap-2 pt-4">
             <Button
               type="button"
-              variant="outline"
+              variant="secondary"
               size="lg"
               onClick={() => setIsOpen(false)}
               className="min-h-11 border-0"
