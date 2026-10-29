@@ -11,7 +11,7 @@ export default function ProductsPage() {
     <>
       <ProductsBanner />
 
-      <div id="btn-scroll" className="w-full scroll-mt-24 sm:scroll-mt-32">
+      <div id="btn-scroll" className="w-full">
         <div className="mx-auto flex w-full max-w-[1410px] items-start">
           <ProductsFilter />
 

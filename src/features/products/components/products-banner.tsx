@@ -14,15 +14,23 @@ export function ProductsBanner() {
     event.preventDefault();
 
     window.setTimeout(() => {
-      const productList = document.querySelector("#btn-scroll");
+      const productList = document.querySelector<HTMLElement>("#btn-scroll");
+      const header = document.querySelector<HTMLElement>("header");
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
 
-      productList?.scrollIntoView({
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "start",
-      });
+      if (productList) {
+        const headerHeight = header?.getBoundingClientRect().height ?? 0;
+        const productListTop =
+          productList.getBoundingClientRect().top + window.scrollY;
+
+        window.scrollTo({
+          top: Math.max(productListTop - headerHeight, 0),
+          behavior: prefersReducedMotion ? "auto" : "smooth",
+        });
+      }
+
       window.history.replaceState(null, "", "#btn-scroll");
     }, 150);
   };
