@@ -71,7 +71,7 @@ export function MobileNavigation() {
                       <Link
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
-                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors duration-200 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none",
                           isActive &&
                             "bg-foreground text-background hover:bg-foreground/90",
                         )}
@@ -81,7 +81,7 @@ export function MobileNavigation() {
                         <ChevronRight
                           aria-hidden="true"
                           className={cn(
-                            "size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5",
+                            "size-4 text-muted-foreground transition-transform duration-200 ease-out group-hover:translate-x-0.5 motion-reduce:transition-none",
                             isActive && "text-background/70",
                           )}
                           strokeWidth={1.75}
@@ -106,7 +106,7 @@ export function MobileNavigation() {
                       <Link
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
-                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors duration-200 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none",
                           isActive &&
                             "bg-foreground text-background hover:bg-foreground/90",
                         )}
@@ -116,7 +116,7 @@ export function MobileNavigation() {
                         <ChevronRight
                           aria-hidden="true"
                           className={cn(
-                            "size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5",
+                            "size-4 text-muted-foreground transition-transform duration-200 ease-out group-hover:translate-x-0.5 motion-reduce:transition-none",
                             isActive && "text-background/70",
                           )}
                           strokeWidth={1.75}

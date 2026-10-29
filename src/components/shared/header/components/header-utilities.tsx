@@ -18,7 +18,7 @@ export function HeaderUtilities() {
       {utilityItems.map(({ label, icon: Icon }) => (
         <li
           key={label}
-          className="flex size-11 items-center justify-center rounded-md text-foreground transition-colors hover:bg-muted focus-within:bg-muted"
+          className="flex size-11 items-center justify-center rounded-md text-foreground transition-colors duration-200 ease-out hover:bg-muted focus-within:bg-muted motion-reduce:transition-none"
         >
           <Icon aria-hidden="true" className="size-5" strokeWidth={2} />
           <span className="sr-only">{label}</span>

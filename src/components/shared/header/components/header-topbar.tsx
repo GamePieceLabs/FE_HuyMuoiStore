@@ -14,10 +14,10 @@ export function HeaderTopbar() {
           {secondaryLinks.map(({ label, href, icon: Icon }) => (
             <li key={href}>
               <Link
-                className="group relative flex h-7 items-center gap-2 rounded-sm px-2.5 text-white/75 transition-colors after:absolute after:inset-x-2.5 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-white/80 after:transition-transform after:duration-200 hover:bg-white/10 hover:text-white hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-1 focus-visible:ring-offset-black focus-visible:after:scale-x-100"
+                className="group relative flex h-7 items-center gap-2 rounded-sm px-2.5 text-white/75 transition-colors duration-200 ease-out after:absolute after:inset-x-2.5 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-white/80 after:transition-transform after:duration-200 after:ease-out hover:bg-white/10 hover:text-white hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-1 focus-visible:ring-offset-black focus-visible:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
                 href={href}
               >
-                <span className="flex size-5 items-center justify-center rounded-sm bg-white/10 text-white/70 transition-colors group-hover:bg-white/15 group-hover:text-white">
+                <span className="flex size-5 items-center justify-center rounded-sm bg-white/10 text-white/70 transition-colors duration-200 ease-out group-hover:bg-white/15 group-hover:text-white motion-reduce:transition-none">
                   <Icon
                     aria-hidden="true"
                     className="size-3.5"
