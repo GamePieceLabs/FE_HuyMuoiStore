@@ -10,7 +10,7 @@ import { MobileNavigation } from "./mobile-navigation";
 type Phase = "idle" | "hiding" | "done";
 
 const SCROLL_THRESHOLD = 10;
-const SHOW_DELAY = 600;
+const SHOW_DELAY = 500;
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +66,7 @@ export function Header() {
 
   return (
     <div
-      className={`sticky top-0 z-50 bg-white transition-transform duration-600 ease-in-out ${
+      className={`sticky top-0 z-50 bg-white transition-transform duration-500 ease-in-out ${
         /* 
           - duration-700: Thời gian trượt lên/xuống kéo dài 0.7 giây (giúp chuyển động chậm và mượt hơn). 
             Nếu vẫn còn nhanh, bạn có thể đổi thành duration-1000 (1 giây).

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
+import { ScrollToTop } from "@/components/shared/scroll-to-top";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Wrapper>
             <Footer />
           </Wrapper>
+          <ScrollToTop />
         </TooltipProvider>
       </body>
     </html>
