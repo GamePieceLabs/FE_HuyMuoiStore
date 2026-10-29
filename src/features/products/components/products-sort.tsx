@@ -53,7 +53,7 @@ export function ProductsSort() {
         render={
           <Button
             variant="ghost"
-            className="h-9 gap-1.5 px-2 font-heading text-sm font-semibold md:h-10 md:gap-2 md:px-3 md:text-base"
+            className="h-11 gap-1.5 px-2 font-heading text-sm font-semibold md:gap-2 md:px-3 md:text-base lg:h-10"
           />
         }
       >
