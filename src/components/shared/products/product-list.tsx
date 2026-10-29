@@ -9,15 +9,35 @@ import { cn } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { ProductCard } from "./product-card";
-import type { ProductCollection } from "./types";
+import type { Product, ProductCollection } from "./types";
 
 interface ProductListProps {
-  tabs: readonly ProductCollection[];
+  tabs?: readonly ProductCollection[];
+  products?: readonly Product[];
   titleId?: string;
   variant?: "default" | "compact";
+  showViewAll?: boolean;
 }
 
-function EmptyProductState({ label }: { label: string }) {
+function ViewAllLink() {
+  return (
+    <Link
+      href="/products"
+      className="inline-flex h-10 shrink-0 items-center gap-1 border-b border-foreground text-xs font-medium text-foreground transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-sm"
+    >
+      Xem tất cả sản phẩm
+      <ArrowUpRight aria-hidden="true" className="size-3.5" />
+    </Link>
+  );
+}
+
+function EmptyProductState({
+  label,
+  showViewAll,
+}: {
+  label: string;
+  showViewAll: boolean;
+}) {
   return (
     <div className="grid min-h-64 place-items-center rounded-xl border border-dashed border-border px-6 py-12 text-center">
       <div className="max-w-sm">
@@ -31,28 +51,56 @@ function EmptyProductState({ label }: { label: string }) {
         <p className="mt-2 text-sm leading-6 text-muted-foreground">
           Các sản phẩm mới sẽ được hiển thị tại đây trong thời gian sớm nhất.
         </p>
-        <Link
-          href="/products"
-          className={buttonVariants({
-            variant: "outline",
-            size: "lg",
-            className: "mt-6",
-          })}
-        >
-          Xem tất cả sản phẩm
-          <ArrowUpRight aria-hidden="true" />
-        </Link>
+        {showViewAll ? (
+          <Link
+            href="/products"
+            className={buttonVariants({
+              variant: "outline",
+              size: "lg",
+              className: "mt-6",
+            })}
+          >
+            Xem tất cả sản phẩm
+            <ArrowUpRight aria-hidden="true" />
+          </Link>
+        ) : null}
       </div>
+    </div>
+  );
+}
+
+function ProductGrid({
+  products,
+  variant,
+}: {
+  products: readonly Product[];
+  variant: "default" | "compact";
+}) {
+  return (
+    <div
+      className={cn(
+        "grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2",
+        variant === "compact"
+          ? "lg:grid-cols-2 lg:gap-4"
+          : "lg:grid-cols-4 lg:gap-5",
+      )}
+    >
+      {products.map((product) => (
+        <ProductCard key={product.slug} product={product} />
+      ))}
     </div>
   );
 }
 
 export function ProductList({
   tabs,
+  products,
   titleId = "home-products-title",
   variant = "default",
+  showViewAll = true,
 }: ProductListProps) {
-  const firstTab = tabs[0];
+  const tabCollections = tabs ?? [];
+  const firstTab = tabCollections[0];
   const [activeTab, setActiveTab] = useState(firstTab?.id ?? "");
   const tabsListRef = useRef<HTMLDivElement>(null);
   const activeTabRef = useRef<HTMLButtonElement>(null);
@@ -83,80 +131,84 @@ export function ProductList({
     return () => window.removeEventListener("resize", updateIndicator);
   }, [activeTab]);
 
-  if (!firstTab) return null;
+  if (!firstTab && products === undefined) return null;
 
   return (
     <section aria-labelledby={titleId} className="w-full">
       <h2 id={titleId} className="sr-only">
-        Sản phẩm nổi bật
+        {firstTab ? "Sản phẩm nổi bật" : "Tất cả sản phẩm"}
       </h2>
 
-      <Tabs
-        defaultValue={firstTab.id}
-        onValueChange={(value) => {
-          if (value) setActiveTab(value);
-        }}
-        className="w-full"
-      >
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-          <TabsList
-            ref={tabsListRef}
-            aria-label="Danh mục sản phẩm"
-            variant="line"
-            className={cn(
-              "relative min-w-0 flex-1 justify-start gap-6 overflow-x-auto rounded-none p-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-              variant === "compact" ? "sm:gap-6" : "sm:gap-9",
-            )}
-          >
-            {tabs.map((tab) => (
-              <TabsTrigger
-                key={tab.id}
-                ref={tab.id === activeTab ? activeTabRef : undefined}
-                value={tab.id}
-                className={cn(
-                  "h-10 flex-none px-0 text-base font-medium after:hidden",
-                  variant === "compact" ? "sm:text-base" : "sm:text-lg",
-                )}
-              >
-                {tab.label}
-              </TabsTrigger>
-            ))}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute bottom-0 left-[var(--tabs-indicator-left)] h-0.5 w-[var(--tabs-indicator-width)] bg-foreground transition-[left,width] duration-300 ease-out"
+      {firstTab ? (
+        <Tabs
+          defaultValue={firstTab.id}
+          onValueChange={(value) => {
+            if (value) setActiveTab(value);
+          }}
+          className="w-full"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+            <TabsList
+              ref={tabsListRef}
+              aria-label="Danh mục sản phẩm"
+              variant="line"
+              className={cn(
+                "relative min-w-0 flex-1 justify-start gap-6 overflow-x-auto rounded-none p-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+                variant === "compact" ? "sm:gap-6" : "sm:gap-9",
+              )}
+            >
+              {tabCollections.map((tab) => (
+                <TabsTrigger
+                  key={tab.id}
+                  ref={tab.id === activeTab ? activeTabRef : undefined}
+                  value={tab.id}
+                  className={cn(
+                    "h-10 flex-none px-0 text-base font-medium after:hidden",
+                    variant === "compact" ? "sm:text-base" : "sm:text-lg",
+                  )}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-0 left-[var(--tabs-indicator-left)] h-0.5 w-[var(--tabs-indicator-width)] bg-foreground transition-[left,width] duration-300 ease-out"
+              />
+            </TabsList>
+
+            {showViewAll ? <ViewAllLink /> : null}
+          </div>
+
+          {tabCollections.map((tab) => (
+            <TabsContent key={tab.id} value={tab.id} className="mt-5 sm:mt-6">
+              {tab.products.length > 0 ? (
+                <ProductGrid products={tab.products} variant={variant} />
+              ) : (
+                <EmptyProductState
+                  label={tab.label}
+                  showViewAll={showViewAll}
+                />
+              )}
+            </TabsContent>
+          ))}
+        </Tabs>
+      ) : (
+        <>
+          {showViewAll ? (
+            <div className="mb-5 flex justify-end sm:mb-6">
+              <ViewAllLink />
+            </div>
+          ) : null}
+          {products && products.length > 0 ? (
+            <ProductGrid products={products} variant={variant} />
+          ) : (
+            <EmptyProductState
+              label="Sản phẩm"
+              showViewAll={showViewAll}
             />
-          </TabsList>
-
-          <Link
-            href="/products"
-            className="inline-flex h-10 shrink-0 items-center gap-1 border-b border-foreground text-xs font-medium text-foreground transition-opacity hover:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-sm"
-          >
-            Xem tất cả sản phẩm
-            <ArrowUpRight aria-hidden="true" className="size-3.5" />
-          </Link>
-        </div>
-
-        {tabs.map((tab) => (
-          <TabsContent key={tab.id} value={tab.id} className="mt-5 sm:mt-6">
-            {tab.products.length > 0 ? (
-              <div
-                className={cn(
-                  "grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4",
-                  variant === "compact"
-                    ? "lg:grid-cols-2 lg:gap-4"
-                    : "lg:grid-cols-4 lg:gap-5",
-                )}
-              >
-                {tab.products.map((product) => (
-                  <ProductCard key={product.slug} product={product} />
-                ))}
-              </div>
-            ) : (
-              <EmptyProductState label={tab.label} />
-            )}
-          </TabsContent>
-        ))}
-      </Tabs>
+          )}
+        </>
+      )}
     </section>
   );
 }

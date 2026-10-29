@@ -19,9 +19,9 @@ const tiktokVideos = Array.from({ length: 5 }, (_, index) => {
   };
 });
 
-export function HomeTiktokShowcase() {
+export function TiktokShowcase() {
   return (
-    <section aria-labelledby="home-tiktok-showcase-title">
+    <section aria-labelledby="tiktok-showcase-title">
       <Wrapper>
         <Carousel
           aria-label="Video TikTok của Dressly"
@@ -31,7 +31,7 @@ export function HomeTiktokShowcase() {
           <div className="relative mb-6 flex flex-col items-center gap-5 sm:mb-8">
             <div className="text-center">
               <h2
-                id="home-tiktok-showcase-title"
+                id="tiktok-showcase-title"
                 className="font-heading text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-4xl"
               >
                 Theo dõi TikTok của chúng tôi
