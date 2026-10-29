@@ -1,13 +1,20 @@
 import type { ReactNode } from "react";
+import { cn } from "cn";
 
 interface WrapperProps {
   children: ReactNode;
+  className?: string;
 }
 
-export function Wrapper({ children }: WrapperProps) {
+export function Wrapper({ children, className }: WrapperProps) {
   return (
-    <div className="py-12 md:py-16 lg:py-20">
-      <div className="m-0 px-[15px] sm:mx-[245px]">
+    <div className="max-w-[1410px] mx-auto">
+      <div
+        className={cn(
+          "px-[15px] [&>*]:py-10 sm:[&>*]:py-12 md:[&>*]:py-16 lg:[&>*]:py-10",
+          className,
+        )}
+      >
         {children}
       </div>
     </div>

@@ -5,34 +5,36 @@ import {
   YoutubeOutlined,
 } from "@lineiconshq/free-icons";
 import { Lineicons } from "@lineiconshq/react-lineicons";
-import { FooterAbout } from "./footer/footer-about";
-import { FooterMobileAccordion } from "./footer/footer-mobile-accordion";
-import { FooterLinks } from "./footer/footer-links";
-import { FooterLinksSecondary } from "./footer/footer-links-secondary";
-import { FooterNewsletter } from "./footer/footer-newsletter";
+import { FooterAbout } from "./components/footer-about";
+import { FooterMobileAccordion } from "./components/footer-mobile-accordion";
+import { FooterLinks } from "./components/footer-links";
+import { FooterLinksSecondary } from "./components/footer-links-secondary";
+import { FooterNewsletter } from "./components/footer-newsletter";
 
 export function Footer() {
   return (
-    <footer className="grid max-h-screen sm:min-h-[500px] grid-rows-[1fr_auto]">
-      <div className="hidden grid-cols-12 gap-8 md:grid">
-        <div className="col-span-5">
+    <footer className="max-w-[1440px] mx-auto grid min-h-[500px] grid-rows-[1fr_auto] gap-12">
+      <div className="hidden grid-cols-1 gap-10 lg:grid lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-5">
           <FooterNewsletter />
         </div>
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <FooterLinks />
         </div>
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <FooterLinksSecondary />
         </div>
-        <div className="col-span-3">
+        <div className="lg:col-span-3">
           <FooterAbout />
         </div>
       </div>
 
       <FooterMobileAccordion />
 
-      <div className="flex flex-col items-center gap-4 border-t pt-6 text-sm text-muted-foreground sm:flex-row sm:justify-between">
-        <p className="text-center sm:text-left">Copyright © 2026 Huy Muoi. Powered by NextJS</p>
+      <div className="flex flex-col items-center gap-4 border-t pt-6 text-sm leading-6 text-muted-foreground sm:flex-row sm:justify-between">
+        <p className="text-center sm:text-left">
+          Copyright © 2026 Huy Muoi. Powered by NextJS
+        </p>
         <div className="flex items-center gap-4" aria-label="Mạng xã hội">
           <Lineicons icon={FacebookOutlined} size={20} aria-label="Facebook" />
           <Lineicons
