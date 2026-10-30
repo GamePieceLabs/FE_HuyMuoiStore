@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
 import { Wrapper } from "@/components/shared/wrapper";
+import { PageTransition } from "@/components/shared/page-transition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <TooltipProvider>
           <Header />
-          <main className="flex flex-1 flex-col items-center">{children}</main>
+          <PageTransition>
+            <main className="flex flex-1 flex-col items-center">
+              {children}
+            </main>
+          </PageTransition>
           <Wrapper>
             <Footer />
           </Wrapper>
