@@ -28,7 +28,7 @@ const navigationListVariants: Variants = {
   closed: {
     transition: {
       delayChildren: 0,
-      staggerChildren: 0.03,
+      staggerChildren: 0.025,
       staggerDirection: -1,
     },
   },
@@ -41,7 +41,7 @@ const navigationItemVariants: Variants = {
   closed: {
     opacity: 0,
     x: -8,
-    transition: { duration: 0.24, ease: EASE },
+    transition: { duration: 0.2, ease: "easeOut" },
   },
   open: {
     opacity: 1,
@@ -73,8 +73,8 @@ export function MobileNavigation() {
       </SheetTrigger>
 
       <SheetContent
-        className="w-[75vw]! max-w-none! p-0 duration-[480ms]! ease-[cubic-bezier(0.22,1,0.36,1)]!"
-        overlayClassName="bg-black/30! duration-[480ms]! supports-backdrop-filter:backdrop-blur-none!"
+        className="w-[75vw]! max-w-none! p-0 duration-[420ms]! ease-[cubic-bezier(0.22,1,0.36,1)]!"
+        overlayClassName="bg-black/30! duration-[420ms]! supports-backdrop-filter:backdrop-blur-none!"
         side="left"
       >
         <SheetHeader className="border-b border-border bg-muted/30 px-5 py-5 pr-14">
