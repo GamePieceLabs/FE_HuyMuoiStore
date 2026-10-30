@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
 import { Wrapper } from "@/components/shared/wrapper";
+import { PageTransition } from "@/components/shared/page-transition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
