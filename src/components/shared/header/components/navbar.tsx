@@ -29,7 +29,8 @@ export function Navbar() {
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "relative block py-2 text-md font-medium text-muted-foreground transition-colors duration-200 ease-out hover:text-foreground focus-visible:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none",
-                    isActive && "text-foreground [anchor-name:--active-nav-item]",
+                    isActive &&
+                      "text-foreground [anchor-name:--active-nav-item]",
                   )}
                   href={href}
                 >
