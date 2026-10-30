@@ -73,7 +73,7 @@ export function Header() {
             Nếu vẫn còn nhanh, bạn có thể đổi thành duration-1000 (1 giây).
           - ease-in-out: Giúp hiệu ứng có gia tốc (bắt đầu chậm, nhanh ở giữa và chậm dần khi dừng).
         */
-        isScrolled ? "shadow-2xl" : "shadow-none"
+        isScrolled ? "shadow-2xl" : "shadow-xs"
       } ${
         isHidden
           ? "pointer-events-none -translate-y-full opacity-0"
