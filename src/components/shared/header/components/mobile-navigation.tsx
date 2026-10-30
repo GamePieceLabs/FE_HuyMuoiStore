@@ -38,11 +38,15 @@ export function MobileNavigation() {
         <Menu aria-hidden="true" className="size-5" strokeWidth={1.75} />
       </SheetTrigger>
 
-      <SheetContent className="w-[min(72vw,18rem)] p-0" side="left">
+      <SheetContent
+        className="w-[75vw]! max-w-none! p-0"
+        overlayClassName="bg-black/30! supports-backdrop-filter:backdrop-blur-none!"
+        side="left"
+      >
         <SheetHeader className="border-b border-border bg-muted/30 px-5 py-5 pr-14">
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
-              <SheetTitle className="truncate text-lg font-semibold tracking-tight">
+              <SheetTitle className="truncate text-2xl font-semibold tracking-tight">
                 Huy Mười Store
               </SheetTitle>
               <p className="mt-1 text-xs text-muted-foreground">
@@ -57,7 +61,7 @@ export function MobileNavigation() {
         </SheetHeader>
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 py-5">
           <nav aria-label="Điều hướng chính">
-            <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <p className="mb-2 px-3 text-lg font-bold uppercase tracking-[0.16em] text-black">
               Khám phá
             </p>
             <ul className="flex flex-col gap-1">
@@ -71,7 +75,7 @@ export function MobileNavigation() {
                       <Link
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
-                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors duration-200 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none",
+                          "group flex min-h-10 items-center justify-between rounded-lg px-3 text-sm font-medium text-foreground transition-colors duration-200 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none",
                           isActive &&
                             "bg-foreground text-background hover:bg-foreground/90",
                         )}
@@ -92,7 +96,7 @@ export function MobileNavigation() {
                 })}
             </ul>
 
-            <p className="mb-2 mt-8 px-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+            <p className="mb-2 mt-8 px-3 text-lg font-bold text-black uppercase tracking-[0.16em]">
               Thông tin
             </p>
             <ul className="flex flex-col gap-1">
@@ -106,7 +110,7 @@ export function MobileNavigation() {
                       <Link
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
-                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-base font-medium text-foreground transition-colors duration-200 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none",
+                          "group flex min-h-12 items-center justify-between rounded-lg px-3 text-sm font-medium text-foreground transition-colors duration-200 ease-out hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none",
                           isActive &&
                             "bg-foreground text-background hover:bg-foreground/90",
                         )}
